@@ -6,5 +6,7 @@
 ![](beer_reviews_day.png)
 It's clear to see in this image however, that the reviews do not really begin populating until around 2002. I decided since the data were so large that I would drop everything before 2002 so the reviews per day graph with the new data looks like this:
 ![](beer_reviews_day_short.png)
+I started to notice when building my recommender that beers that only had 1 review were returning a pairwise distance value of 0 <em>exactly</em>. I decided since these beers were non-informative and messing up my recommender I would drop all beers with only 1 review. There were 18,850 beers with only 1 review in the full dataset so dropping these only accounted for losing about 1.2% of the data. I was also curious about what beers were rated the most in the data to see if these beers would be recommended more or less often:
+![](most_rated_beers.png)
 
 This is the dataset I will use for the brewery recommender model. When I constructMy goal is to pull data from 
