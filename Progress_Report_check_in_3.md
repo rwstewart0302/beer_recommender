@@ -16,5 +16,8 @@ I built my recommender using the overall beer rating and that particular beer. I
 After getting my recommender dataframe using pairwise distances between the beers I then passed this into a function to score breweries using the similarity scores between beers. I created a random user to score any number of beers on a 0-5 uniform distribution scale. This user's beers were then each passed into the recommender and the most similar beers were kept. These similar beers were then passed back into the dataframe to determine where the beers came from (i.e. what brewery they exist at). Then I took the mean of the similarity scores for the breweries and sorted these breweries by the most similar. The end result for a user with 50 beers looks like the following right now:
 ![](images/50_beer_recommender.png)
 
+### Future Implimentations
+My goal is to build this recommender function into a working flask app so that someone can feed in their own profile and determine the most similar brewery for them. Then using GoogleAPI I will give them the option to map to the brewery (out of the 3 most similar choices). I also want to look at twitter data to find any trends in popularity surrounding breweries in a particular area.
+
 ## Beer Recommender
-- Although I have not made progress on the beer recommender model I hope to gather data from RateBeer and OpenBrewerydb to find 
+Although I have not made progress on the beer recommender model I hope to gather data from RateBeer and OpenBrewerydb to build a recommender based on the style of someone's beer profile rather than their overall rating.
