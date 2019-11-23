@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/echo" method="POST">
+    <input name="text">
+    <input type="submit" value="Echo">
+    </form>
+
+{% for table in tables %}
+            {{ table|safe }}
+{% endfor %}
+</body>
+</html>
