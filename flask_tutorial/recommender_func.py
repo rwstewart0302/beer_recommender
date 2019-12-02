@@ -3,8 +3,8 @@ import numpy as np
 # from scipy import sparse
 
 # loading in the beer and brewery dataframe and the recommender demo dataframe
-df = pd.read_csv('../new_capstone_repo/beer_recommender/data/beer_reviews_col_drop.csv')
-recommender_df = pd.read_csv('../new_capstone_repo/beer_recommender/data/recommender_demo.csv')
+df = pd.read_csv('../data/beer_reviews_col_drop.csv')
+recommender_df = pd.read_csv('../data/recommender_demo.csv')
 recommender_df.set_index('beer_name', inplace=True)
 
 
@@ -15,10 +15,10 @@ def brewery_recommender(user):
 
     for key, value in user.items():
         rec = {}
-        if value >= 3.5:
-            rec[key] = recommender_df[key].sort_values()[1:11]
-            recs.append(rec)
-            rating_scale.append(value)
+#         if value >= 3.5:
+        rec[key] = recommender_df[key].sort_values()[1:11]
+        recs.append(rec)
+        rating_scale.append(value)
 
     count = 0
     scaler_count = 0
@@ -35,8 +35,18 @@ def brewery_recommender(user):
                         scaler = rating_scale[scaler_count]
                     except:
                         continue
-                scaled_value = 1 + ((scaler - 3.5) / scaler)
-                beer_checklist.append((recom, score / scaled_value))
+                if scaler > 3:
+                    scaled_value = 1 + ((scaler - 3) / scaler)
+                else:
+                    scaled_value = 1 - ((3 - scaler) / 3)
+
+                try:
+                    new_score = score / scaled_value
+                except:
+                    new_score = score
+                if new_score >= 1:
+                    new_score = 1
+                beer_checklist.append((recom, new_score))
 
     # creating a list of breweries and the beer scores associated with that brewery to find the most
     # similar brewery based on the mean similarity score
@@ -116,17 +126,17 @@ def sorting_brewery_scores(rand_user):
 
 def data_manipulation(rand_user):
     recs = sorting_brewery_scores(rand_user)
-    best_beers = recs[1]
     data = pd.DataFrame(recs[0])
-    # data.set_index('brewery', inplace=True)
-    new_recs = data.sort_values(['score']).loc[(data.sort_values(['score'])['similar_beers'] >= 1) &
-                                               (data.sort_values(['score'])['score'] < 0.5)]
+    beers_best = recs[1]
+    new_recs = data.sort_values(['score']).loc[(data.sort_values(['score'])['similar_beers'] >= 2) &
+                                               (data.sort_values(['score'])['score'] < 1)]
 
+    new_recs = pd.DataFrame(new_recs).sort_values('similar_beers', ascending=False)
     beers = {}
     for i in new_recs['brewery']:
         beer_list = []
         check = 1
-        for brewery, beer in best_beers.items():
+        for brewery, beer in beers_best.items():
             if i == brewery and len(beer) > 0:
                 beer_list = beer
                 check = 0
