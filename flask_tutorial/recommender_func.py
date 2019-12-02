@@ -129,7 +129,7 @@ def data_manipulation(rand_user):
     data = pd.DataFrame(recs[0])
     beers_best = recs[1]
     new_recs = data.sort_values(['score']).loc[(data.sort_values(['score'])['similar_beers'] >= 2) &
-                                               (data.sort_values(['score'])['score'] < 1)]
+                                               (data.sort_values(['score'])['score'] < 0.75)]
 
     new_recs = pd.DataFrame(new_recs).sort_values('similar_beers', ascending=False)
     beers = {}
