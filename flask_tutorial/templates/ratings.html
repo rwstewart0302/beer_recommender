@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <h1>Rate the top 10 most popular beers to get your brewery recommendations!</h1>
+        <hr style="border-top: dotted 3px;" />
+        <br>
+        <form action="/recommendations">
+            <p>
+                <label for="90MinuteIPA">Dogfish Head 90 Minute IPA</label><br>
+                <input name="90MinuteIPA" type="range" min="0" value="2.5" max="5" step="0.1" class="slider1", id="myRange1">
+                Rating: <span id="demo1"></span>
+                <!-- <output type="text" id="textInput" value=""></output> -->
+            </p>
+            <p>
+                <label for="OldRasp">Old Rasputin Russian Imperial Stout</label><br>
+                <input name="OldRasp" type="range" min="0" value="2.5" max="5" step="0.1" class="slider2", id="myRange2">
+                Rating: <span id="demo2"></span>
+            </p>
+            <p>
+                <label for="SNCeleb">Sierra Nevada Celebration Ale</label><br>
+                <input name="SNCeleb" type="range" min="0" value="2.5" max="5" step="0.1" class="slider3", id="myRange3">
+                Rating: <span id="demo3"></span>
+            </p>
+            <p>
+                <label for="TwoHeart">Bell's Two Hearted Ale</label><br>
+                <input name="TwoHeart" type="range" min="0" value="2.5" max="5" step="0.1" class="slider4", id="myRange4">
+                Rating: <span id="demo4"></span>
+            </p>
+            <p>
+                <label for="StoneRuin">Stone Ruination IPA</label><br>
+                <input name="StoneRuin" type="range" min="0" value="2.5" max="5" step="0.1" class="slider5", id="myRange5">
+                Rating: <span id="demo5"></span>
+            </p>
+            <p>
+                <label for="ArrgB">Arrogant Bastard Ale</label><br>
+                <input name="ArrgB" type="range" min="0" value="2.5" max="5" step="0.1" class="slider6", id="myRange6">
+                Rating: <span id="demo6"></span>
+            </p>
+            <p>
+                <label for="SNPale">Sierra Nevada Pale Ale</label><br>
+                <input name="SNPale" type="range" min="0" value="2.5" max="5" step="0.1" class="slider7", id="myRange7">
+                Rating: <span id="demo7"></span>
+            </p>
+            <p>
+                <label for="StoneIPA">Stone IPA</label><br>
+                <input name="StoneIPA" type="range" min="0" value="2.5" max="5" step="0.1" class="slider8", id="myRange8">
+                Rating: <span id="demo8"></span>
+            </p>
+            <p>
+                <label for="Pliny">Russian River: Pliny the Elder</label><br>
+                <input name="Pliny" type="range" min="0" value="2.5" max="5" step="0.1" class="slider9", id="myRange9">
+                Rating: <span id="demo9"></span>
+            </p>
+            <p>
+                <label for="FoundBreak">Founder's Breakfast Stout</label><br>
+                <input name="FoundBreak" type="range" min="0" value="2.5" max="5" step="0.1" class="slider10", id="myRange10">
+                Rating: <span id="demo10"></span>
+            </p>
+
+            <p><button type="submit">Breweries For Me!</button></p>
+
+<script>
+    var slider1 = document.getElementById("myRange1");
+    var output1 = document.getElementById("demo1");
+    output1.innerHTML = slider1.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider1.oninput = function() {
+    output1.innerHTML = this.value;
+}
+
+    var slider2 = document.getElementById("myRange2");
+    var output2 = document.getElementById("demo2");
+    output2.innerHTML = slider2.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider2.oninput = function() {
+    output2.innerHTML = this.value;
+}
+
+    var slider3 = document.getElementById("myRange3");
+    var output3 = document.getElementById("demo3");
+    output3.innerHTML = slider3.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider3.oninput = function() {
+    output3.innerHTML = this.value;
+}
+
+    var slider4 = document.getElementById("myRange4");
+    var output4 = document.getElementById("demo4");
+    output4.innerHTML = slider4.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider4.oninput = function() {
+    output4.innerHTML = this.value;
+}
+
+    var slider5 = document.getElementById("myRange5");
+    var output5 = document.getElementById("demo5");
+    output5.innerHTML = slider5.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider5.oninput = function() {
+    output5.innerHTML = this.value;
+}
+
+    var slider6 = document.getElementById("myRange6");
+    var output6 = document.getElementById("demo6");
+    output6.innerHTML = slider6.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider6.oninput = function() {
+    output6.innerHTML = this.value;
+}
+    var slider7 = document.getElementById("myRange7");
+    var output7 = document.getElementById("demo7");
+    output7.innerHTML = slider7.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider7.oninput = function() {
+    output7.innerHTML = this.value;
+}
+    var slider8 = document.getElementById("myRange8");
+    var output8 = document.getElementById("demo8");
+    output8.innerHTML = slider8.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider8.oninput = function() {
+    output8.innerHTML = this.value;
+}
+
+    var slider9 = document.getElementById("myRange9");
+    var output9 = document.getElementById("demo9");
+    output9.innerHTML = slider9.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider9.oninput = function() {
+    output9.innerHTML = this.value;
+}
+
+    var slider10 = document.getElementById("myRange10");
+    var output10 = document.getElementById("demo10");
+    output10.innerHTML = slider10.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider10.oninput = function() {
+    output10.innerHTML = this.value;
+}
+    // function updateTextInput(val) {
+    //       document.getElementById('textInput').value=val;
+    //     }
+</script>
+
+</form>
+    </div>
+{% endblock content %}
