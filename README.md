@@ -34,7 +34,8 @@ I created the function in a `.py` file so that I could pass it in to the flask a
 #### Get recommendations
 Right now the app is hosted locally, where users can login and either add new beers by going to this page:
 ![](images/pick_beers.png)
-
+<br>
+<br>
 After users select all their beers they can see their recommendations on this page:
 ![](images/recommendations_flask.png)
 
