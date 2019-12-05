@@ -8,7 +8,7 @@
     {% for brewery, beers in recommendations.items() %}
         <div class="media-body">
             <p>
-                <h3> <a href="#">{{ brewery }}<a></h3>
+                <h3> <a method="POST" href="{{ url_for('testing', brewery=brewery) }}">{{ brewery }}<a></h3>
                 <h5>Make sure you try these beers while you are there!</h5>
                 <ul>
                 {% for beer in beers %}

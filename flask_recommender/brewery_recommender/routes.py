@@ -200,3 +200,10 @@ def user_posts(username):
         .order_by(Post.date_posted.desc())\
         .paginate(page=page, per_page=50)
     return render_template('user_posts.html', posts=posts, user=user)
+
+
+@app.route('/testing', methods=['GET', 'POST'])
+def testing():
+    page = request.args
+    brewery = page['brewery']
+    return redirect("http://www.google.com/search?q="+brewery)
