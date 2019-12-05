@@ -4,11 +4,8 @@ import pickle
 
 # loading in the beer and brewery dataframe and the recommender demo dataframe
 df = pd.read_csv('../data/beer_reviews_col_drop.csv')
-# recommender_df = pd.read_csv(
-#     '../../../../new_capstone_repo/beer_recommender/data/recommender_demo.csv')
 recommender_df = pickle.load(
     open('../../recommender_df.p', 'rb'))
-# recommender_df.set_index('beer_name', inplace=True)
 
 
 def brewery_recommender(user):
