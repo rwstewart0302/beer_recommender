@@ -32,12 +32,13 @@ I first had to create a database to allow users to add beers to their unique pro
 I created the function in a `.py` file so that I could pass it in to the flask app and create recommendations based on the inputs in the unique user's database. As the user adds more beer to their database their recommendations will adjust and possibly change over time to account for their varied (or not) tastes.
 
 #### Get recommendations
-Right now the app is hosted locally, where users can login and either add new beers by going to this page
-![](images/)
+Right now the app is hosted locally, where users can login and either add new beers by going to this page:
+![](images/pick_beers.png)
 
-With the similar beers at a brewery, you can see that I just tell the user how many similar beers are at a particular brewery not what those beers are. Similar beers are beers with similarity scores (pairwise distances) less than 0.5. It would be nice to know what those beers are and possibly where the user can buy them. Before the end of the project, I will be adding functionality with GoogleMapsAPI where I will give them the option to map to the breweries or even to where the user can buy the most similar beers. I also want to look at twitter data to find any trends in popularity surrounding breweries in a particular area., but I'm not sure if this is going to work because twitter data isn't always that easy to work with. Currently, I used the #brewery hashtag to look for any trends in specific areas. After some more cleaning, I may be able to return more useful results for looking at "trending" breweries in a geographic location.
+After users select all their beers they can see their recommendations on this page:
+![](images/recommendations_flask.png)
 
-Right now the flask app
+Each of the breweries are hyperlinked to a Google search for that specific brewery.
 
 ### Future Implementations
 - Allow users to find breweries in a specific area
