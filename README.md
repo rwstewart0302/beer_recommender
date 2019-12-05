@@ -1,7 +1,7 @@
 # Brewery Recommender
 
 ## Overview
-I built a recommender system to figure out the most similar <em>brewery</em> based on a users overall beer ratings (0-5 scale).
+I built a recommender system to figure out the most similar <em>brewery</em> based on a users overall beer ratings (0-5 scale). For a nice summary of this project check out [my slide-deck](https://docs.google.com/presentation/d/1uE6XE-PuF7H2H0cICOjfcN5E-YqCN8AjURcOHUSi9TQ/edit?usp=sharing)
 
 ### Workflow Summary
 - Cleaning and visualizing the dataset
