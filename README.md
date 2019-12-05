@@ -1,21 +1,21 @@
-# Beer Recommender
+# Brewery Recommender
 
 ## Overview
-I am builading a recommender system to figure out the most similar <em>brewery</em> based on a users overall beer ratings (0-5 scale). I hope to build another recommender model before the December deadline recommending specific <em>beers</em> for a user based on style preferences alone.
+I built a recommender system to figure out the most similar <em>brewery</em> based on a users overall beer ratings (0-5 scale).
 
-### Data/EDA
-I have been primarily working with a historical [dataset from BeerAdvocate](https://www.kaggle.com/rdoume/beerreviews) from 1997-2011 consisting of over 1.5 million beer review entries.
-![](images/beer_reviews_day.png)
-It's clear to see in this image however, that the reviews do not really begin populating until around 2002. I decided since the data were so large that I would drop everything before 2002 so the reviews per day graph with the new data looks like this:
-![](images/beer_reviews_day_short.png)
-I started to notice when building my recommender that beers that only had 1 review were returning a pairwise distance value of 0 <em>exactly</em>. I decided since these beers were non-informative and messing up my recommender I would drop all beers with only 1 review. There were 18,850 beers with only 1 review in the full dataset so dropping these only accounted for losing about 1.2% of the data. I was also curious about what beers were rated the most in the data to see if these beers would be recommended more or less often:
-![](images/most_rated_beers.png)
-Looking at the most common beers I noticed that there were a lot of beers named IPA, which does not represent a specific beer so I considered these mislabelled and dropped these from the data set as well giving me a new list of most common beers:
-![](images/most_rated_beers_drop.png)
-I also dropped all beers that had no brewery name or username associated with them because I need both of these in my recommender model. Finally I created a smaller dataset that contained all columns from the original dataset with the dropped values removed, and only the review score, username, beer name, and the brewery names were kept in order to save memory when creating the recommender.
+### Workflow Summary
+- Cleaning and visualizing the dataset
+- Building recommender dataframe using pairwise-distances
+- Compressing recommender dataframe to save space and memory
+-
 
-### Recommender Building
-I built my recommender using the overall beer rating and that particular beer. I passed these into a pivot table and then determined the pairwise distances between the beers using cosine similarity. A major problem I am running into is the speed of this recommender because the recommender data frame takes up about 10.7GB of memory! I am currently looking for a way to reduce this memory size.
+### Cleaning and Visualizing Data
+I worked with a historical [dataset from BeerAdvocate](https://www.kaggle.com/rdoume/beerreviews) that spanned from 1996-2011 consisting of over 1.5 million beer review entries. I ended up cleaning the data so that I was working with about 1.3 million entries when building my model.
+<br>
+I had to remove sparse entries from my data because they would skew my pair-wise distance calculations when getting brewery recommendations.
+
+### Building Recommender
+I built my recommender using the overall beer rating and that particular beer. I passed these into a pivot table and then determined the pairwise distances between the beers using cosine similarity. In order to save space I had to first convert all the `float64` values to `float16` values. The memory needed to store the recommender dataframe dropped from 10.7+GB to 2.7+GB when I did this. I then pickled my dataframe and zipped it to be able to upload it to Github.
 
 I looked into chunking the data but since I need access to all the beers at all times so I don't think this is going to work. Also, I don't think pickling my data will work since I will just read the data back in. Right now the main reduction in memory comes from dropping unnecessary columns from the original data set and converting my float64 values to float32. This reduced my data frame to take up only ...
 
@@ -36,4 +36,4 @@ With the similar beers at a brewery, you can see that I just tell the user how m
 Right now the flask app
 
 ## Beer Style Recommender
-Although I have not made progress on the beer recommender model I hope to gather data from RateBeer and OpenBrewerydb to build a recommender based on the style of someone's beer profile rather than their overall rating.
+Although I have not made progress on the beer recommender model I hope to gather data from RateBeer and OpenBrewerydb to build a recommender based on the style of someone's beer profile rather than their overall rating. I hope to build another recommender model before the December deadline recommending specific <em>beers</em> for a user based on style preferences alone.
