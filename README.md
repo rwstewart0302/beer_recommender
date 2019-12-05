@@ -36,6 +36,7 @@ Right now the app is hosted locally, where users can login and either add new be
 ![](images/pick_beers.png)
 <br>
 <br>
+<br>
 After users select all their beers they can see their recommendations on this page:
 ![](images/recommendations_flask.png)
 
