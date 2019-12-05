@@ -25,15 +25,21 @@ I built my recommender using the overall beer rating and that particular beer. I
 After building my recommender dataframe with pairwise distances between the beers I then passed this into a function to score breweries using the similarity scores between beers. This function takes a user's rated beers and figures out which beers are the most similar. It then determines what brewery these beers exist at. Note here that pairwise-distances are scaled for the rating given by the user for each beer so that 5 has more positive weight than 4, and 1 has more negative weight than 2. After determining where each beer existed I then found the mean similarity score for each brewery and determined if there were any similar beers at each brewery (similar beers have a similarity score < 0.5). After this I then returned the most similar breweries (breweries with mean similarity scores < 0.75) with more than 1 similar beer to a dictionary.
 
 ### Flask App
-I have made significant progress in building out a flask app for my final project. Right now the app is hosted locally, where a user will eventually be able to login or register to create an account. When the user goes to register for an account they will be prompted to rate the 10 most commonly rated beers (see chart above), leaving the ones they haven't had blank. Based on these preliminary ratings the recommender then prints out the 3 most similar breweries. My next goals are to have this printout look nicer on the screen and to also tell the user what the most similar beers are. The user input screen right now looks like this:
-![](images/user_ratings.png)
+#### Creating database for users in SQLAlchemy
+I first had to create a database to allow users to add beers to their unique profile. I used SQLAlchemy and created classes for both the users and their posts.
 
-On this screen, the user can enter in any number, but my goal is to add a slider bar between 0 and 5. The recommendation are given on the next screen which looks like this:
-![](images/recommendations.png)
+#### Run brewery function underneath flask
+I created the function in a `.py` file so that I could pass it in to the flask app and create recommendations based on the inputs in the unique user's database. As the user adds more beer to their database their recommendations will adjust and possibly change over time to account for their varied (or not) tastes.
+
+#### Get recommendations
+Right now the app is hosted locally, where users can login and either add new beers by going to this page
+![](images/)
 
 With the similar beers at a brewery, you can see that I just tell the user how many similar beers are at a particular brewery not what those beers are. Similar beers are beers with similarity scores (pairwise distances) less than 0.5. It would be nice to know what those beers are and possibly where the user can buy them. Before the end of the project, I will be adding functionality with GoogleMapsAPI where I will give them the option to map to the breweries or even to where the user can buy the most similar beers. I also want to look at twitter data to find any trends in popularity surrounding breweries in a particular area., but I'm not sure if this is going to work because twitter data isn't always that easy to work with. Currently, I used the #brewery hashtag to look for any trends in specific areas. After some more cleaning, I may be able to return more useful results for looking at "trending" breweries in a geographic location.
 
 Right now the flask app
 
-## Beer Style Recommender
-Although I have not made progress on the beer recommender model I hope to gather data from RateBeer and OpenBrewerydb to build a recommender based on the style of someone's beer profile rather than their overall rating. I hope to build another recommender model before the December deadline recommending specific <em>beers</em> for a user based on style preferences alone.
+### Future Implementations
+- Allow users to find breweries in a specific area
+- Give users the ability to add new beers to the complete database of beers
+- Give users the ability to create a style profile to build a content based recommender model
