@@ -1,5 +1,36 @@
 {% extends "layout.html" %}
 {% block content %}
 <h1>Welcome To Your Personalized Brewery Recommender!</h1>
-
+<p>On this website you can get your own personal brewery recommendations!
+    In order to get your recommendations you first need to make an account.
+    Make sure to create your account if you haven't already!
+</p>
+<form action="{{ url_for('register')}}">
+    <input type="submit" value="Create An Account" />
+</form>
+<p>
+    <br>
+    After you create an account you can update your personal information,
+    and add a unique profile picture by clicking below!
+    <form action="{{ url_for('account')}}">
+        <input type="submit" value="Your Account" />
+    </form>
+    <br>
+    In order for the recommender to work you have to add beers
+    to your account and rate them. Click below to rate some tasty
+    beers!
+    <form action="{{ url_for('new_post')}}">
+        <input type="submit" value="Add Beer" />
+    </form>
+    <br>
+    Check the beers you've added to your account here!
+    <form action="{{ url_for('your_beers')}}">
+        <input type="submit" value="Your Beers" />
+    </form>
+    <br>
+    And don't forget to get your brewery recommendations!
+</p>
+<form action="{{ url_for('recommendations')}}">
+    <input type="submit" value="Brewery Recommender!" />
+</form>
 {% endblock content %}

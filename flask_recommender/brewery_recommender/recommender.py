@@ -16,7 +16,7 @@ def brewery_recommender(user):
     recs = []
     rating_scale = []
 
-    num_beers = 50  # this is the number of similar beers we are looking at
+    num_beers = 10  # this is the number of similar beers we are looking at
 
     for key, value in user.items():
         rec = {}
