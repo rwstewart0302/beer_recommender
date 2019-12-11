@@ -12,6 +12,12 @@ I built a recommender system to figure out the most similar <em>brewery</em> bas
   - Create a database for users using SQLAlchemy
   - Run brewery recommender function underneath flask
   - Get recommendations!
+  
+### Using this Application
+1. Fork and clone this repo
+2. Run `pip install -r requirements.txt`
+3. Navigate using `cd flask_recommender` to the correct directory
+4. Run the app with `python run.py`
 
 ### Cleaning and Visualizing Data
 I worked with a historical [dataset from BeerAdvocate](https://www.kaggle.com/rdoume/beerreviews) that spanned from 1996-2011 consisting of over 1.5 million beer review entries. I ended up cleaning the data so that I was working with about 1.3 million entries when building my model.
